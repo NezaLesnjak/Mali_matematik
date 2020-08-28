@@ -1,0 +1,41 @@
+{
+    "uporabnisko_ime": "prazen",
+    "geslo": "prazen",
+    "podatki": {
+        "st_iger": 2,
+        "igre": [
+            {
+                "ime_igre" : "prva igra",
+                "operacija": "seštevanje",
+                "primeri": [{
+                    "stevilo1":1,
+                    "stevilo2":1,
+                    "resitev":2,
+                    "operacija": "seštevanje"
+                },
+                {
+                    "stevilo1":1,
+                    "stevilo2":1,
+                    "resitev":2,
+                    "operacija": "seštevanje"
+                }]
+            },
+            {
+                "ime_igre" : "druga igra",
+                "operacija": "odštevanje",
+                "primeri": [{
+                    "stevilo1":3,
+                    "stevilo2":1,
+                    "resitev":2,
+                    "operacija": "odštevanje"
+                },
+                {
+                    "stevilo1":3,
+                    "stevilo2":1,
+                    "resitev":2,
+                    "operacija": "odštevanje"
+                }]
+            }
+        ]
+    }
+}
