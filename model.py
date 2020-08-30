@@ -36,9 +36,8 @@ class Podatki:
         self.igre = []
         self.napacniPrimeri = []
 
-    def nova_igra_nalozi(self, operacija, ime_igre):
-        self.operacija = operacija
-        self.ime_igre = ime_igre
+    def nova_igra_nalozi(self, operacija, ime_igre, primeri):
+        self.igre.append(Igra(ime_igre, operacija, primeri))
 
     def nova_igra(self, operacija, ime_igre):
         self.operacija = operacija
@@ -62,17 +61,21 @@ class Podatki:
                     "resitev": primer.resitev,
                     "operacija": primer.operacija
                 }for primer in igra.primeri]
-            }
+            }]
         }
 
     @classmethod
     def nalozi_iz_slovarja(cls, slovar_s_stanjem):
         podatki = cls()
         for igra in slovar_s_stanjem['igre']:
+            primeri = []
+            for primer in igra['primeri']:
+                nov_primer = Primer(primer['stevilo1'], primer['stevilo2'], primer['operacija'], primer['resitev'])
+                primeri.append(nov_primer)
             nova_igra = podatki.nova_igra_nalozi(
             igra['operacija'],
-            igra['ime_igre']
-            )
+            igra['ime_igre'],
+            primeri)
         return podatki
 
     def _ustvari_primere(self, operacija):
