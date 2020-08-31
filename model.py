@@ -38,10 +38,10 @@ class Podatki:
     def nova_igra_nalozi(self, operacija, ime_igre, primeri):
         self.igre.append(Igra(ime_igre, operacija, primeri))
 
+    @classmethod
     def nova_igra(self, operacija, ime_igre):
-        self.operacija = operacija
-        self.ime_igre = ime_igre
-        self.primeri = Podatki._ustvari_primere(self,operacija)
+        nigra = Igra(ime_igre, operacija,Podatki._ustvari_primere(self,operacija))
+        return nigra  
 
     def nova_igra_rez(self, stopnja, operacija, primeri):
         self.stopnja = stopnja,
@@ -49,14 +49,11 @@ class Podatki:
         self.primeri = primeri
 
     def nov_napacenPrimer_nalozi(self, stevilka1, stevilka2, operacija, resitev, vasVnos):
-        self.napacniPrimeri.append(napacniPrimer(stevilka1, stevilka2, operacija, resitev, vasVnos))
+        self.napacniPrimeri.append(NapacniPrimer(stevilka1, stevilka2, operacija, resitev, vasVnos))
 
     def nov_napacenPrimer(self, stevilka1,stevilka2,operacija, resitev,vasVnos):
-        self.stevilka1 = stevilka1,
-        self.stevilka2 = stevilka2,
-        self.operacija = operacija,
-        self.resitev = resitev,
-        self.vasVnos = vasVnos 
+        self.napacniPrimeri.append(NapacniPrimer(stevilka1,stevilka2, operacija, resitev, vasVnos))
+
 
     def slovar_s_stanjem(self):
         return {
@@ -64,15 +61,15 @@ class Podatki:
                 'ime_igre': igra.ime_igre,            
                 'operacija': igra.operacija,
                 'primeri': [{
-                    "stevilo1": primer.stevilka1,
-                    "stevilo2": primer.stevilka2,
+                    "stevilka1": primer.stevilka1,
+                    "stevilka2": primer.stevilka2,
                     "resitev": primer.resitev,
                     "operacija": primer.operacija
                 }for primer in igra.primeri]
             }for igra in self.igre],
             'napacniPrimeri': [{
-                "stevilo1": napacniPrimer.stevilka1,
-                "stevilo2": napacniPrimer.stevilka2,
+                "stevilka1": napacniPrimer.stevilka1,
+                "stevilka2": napacniPrimer.stevilka2,
                 "operacija": napacniPrimer.operacija,
                 "resitev:": napacniPrimer.resitev,
                 "vasVnos": napacniPrimer.vasVnos
@@ -85,8 +82,8 @@ class Podatki:
         for igra in slovar_s_stanjem['igre']:
             primeri = []
             for primer in igra['primeri']:
-                nov_primer = Primer(primer['stevilo1'], 
-                primer['stevilo2'], 
+                nov_primer = Primer(primer['stevilka1'], 
+                primer['stevilka2'], 
                 primer['operacija'], 
                 primer['resitev'])
                 primeri.append(nov_primer)
@@ -95,22 +92,17 @@ class Podatki:
             igra['ime_igre'],
             primeri)
         for napacniPrimer in slovar_s_stanjem['napacniPrimeri']:
-            podatki.nov_napacenPrimer(napacniPrimer['stevilo1'], 
-            napacniPrimer['stevilo2'], 
-            napacniPrimer['operacija'], 
-            napacniPrimer['resitev'], 
-            napacniPrimer['vasVnos'])
-            podatki.nov_napacenPrimer_nalozi(napacniPrimer['stevilo1'],
-            napacniPrimer['stevilo2'],
+            podatki.nov_napacenPrimer_nalozi(napacniPrimer['stevilka1'],
+            napacniPrimer['stevilka2'],
             napacniPrimer['operacija'],
             napacniPrimer['resitev'],
-            napacniPrimer['vasVnos'])
+            napacniPrimer['vasVnos'])            
         return podatki
 
     def _ustvari_primere(self, operacija):
         primeri = []
         i = 1
-        while i <= 5:
+        while i <= 1:
             primer = Podatki._nov_primer(self,operacija)                        
             primeri.append(primer)
             i += 1
@@ -165,7 +157,7 @@ class Primer:
         self.operacija = operacija,
         self.resitev = resitev
 
-class napacniPrimer:
+class NapacniPrimer:
     def __init__(self, stevilka1,stevilka2,operacija, resitev,vasVnos):
         self.stevilka1 = stevilka1,
         self.stevilka2 = stevilka2,

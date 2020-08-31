@@ -8,14 +8,14 @@
                 "ime_igre" : "prva igra",
                 "operacija": "seštevanje",
                 "primeri": [{
-                    "stevilo1":1,
-                    "stevilo2":1,
+                    "stevilka1":1,
+                    "stevilka2":1,
                     "resitev":2,
                     "operacija": "seštevanje"
                 },
                 {
-                    "stevilo1":1,
-                    "stevilo2":1,
+                    "stevilka1":1,
+                    "stevilka2":1,
                     "resitev":2,
                     "operacija": "seštevanje"
                 }]
@@ -24,14 +24,14 @@
                 "ime_igre" : "druga igra",
                 "operacija": "odštevanje",
                 "primeri": [{
-                    "stevilo1":3,
-                    "stevilo2":1,
+                    "stevilka1":3,
+                    "stevilka2":1,
                     "resitev":2,
                     "operacija": "odštevanje"
                 },
                 {
-                    "stevilo1":3,
-                    "stevilo2":1,
+                    "stevilka1":3,
+                    "stevilka2":1,
                     "resitev":2,
                     "operacija": "odštevanje"
                 }]
@@ -39,15 +39,15 @@
         ],
         "napacniPrimeri": [
             {
-                "stevilo1":1,
-                "stevilo2":1,
+                "stevilka1":1,
+                "stevilka2":1,
                 "operacija": "seštevanje",
                 "resitev":2,
                 "vasVnos":3
             },
             {
-                "stevilo1":1,
-                "stevilo2":1,
+                "stevilka1":1,
+                "stevilka2":1,
                 "operacija": "seštevanje",
                 "resitev":2,
                 "vasVnos":3
