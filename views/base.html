@@ -1,0 +1,76 @@
+% zavihki = [
+%     'podatki',
+%     'igra'   
+% ]
+% oznaka_zavihka = {
+%     'podatki': 'Zacetna stran',
+%     'igra': 'Igra'
+% }
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    % if defined('izbrani_zavihek'):
+    <title>Mali matematik – {{oznaka_zavihka[izbrani_zavihek]}}</title>
+    % else:
+    <title>Mali matematik</title>
+    % end
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+  <body>
+    <nav class="navbar is-light">
+      <div class="container">
+        <div class="navbar-brand">
+          <span class="navbar-item">
+            <strong>Mali matematik</strong>
+          </span>
+        </div>
+        <div class="navbar-start">
+          % if defined('izbrani_zavihek'):
+            % for zavihek in zavihki:
+            % if zavihek == izbrani_zavihek:
+              <a class="navbar-item is-active" href="/{{zavihek}}/">
+            % else:
+              <a class="navbar-item" href="/{{zavihek}}/">
+            % end
+            <span>{{oznaka_zavihka[zavihek]}}</span>
+            </a>
+            % end
+          % end
+        </div>      
+        % if defined('izbrani_zavihek'):
+        <div class="navbar-end">
+          <span>
+            <form method="POST" action="/odjava/">
+              <input type="submit" value="odjavi me">
+            </form>
+          </span>
+        </div>
+        % end
+      </div>
+    </nav>
+    <section class="section">
+      {{!base}}
+    </section>
+  </body>
+  <footer>
+    <div class="footer">
+      <p>Neža Lesnjak</p>
+    </div>
+  </footer>
+
+
+  <style>
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      color: black;
+      text-align: center;
+    }
+    </style>
+</html>

@@ -1,0 +1,79 @@
+% rebase('base.html', izbrani_zavihek='podatki' )
+
+<div class="columns">
+    <div class="column is-one-fifth">
+        <nav class="panel">
+            <p class="panel-heading">
+                <i class="fas fa-exchange-alt"></i>
+                Statistični podatki:
+            </p>
+            <table>
+                %for igra in podatki.igre:
+                <tr>
+                    <td>{{igra.ime_igre}}</td>
+                </tr>
+                %end
+            </table>
+        </nav>
+
+       <nav class="panel">
+            <p class="panel-heading">
+                <i class="fas fa-exchange-alt"></i>
+                Napačni primeri:
+            </p>
+            <table>
+                %for napacenPrimer in podatki.napacniPrimeri:
+                <tr>
+                    <td>
+                        <label>{{napacenPrimer.stevilka1[0]}}</label>
+                        % if napacenPrimer.operacija[0] == "sestevanje":
+                            <label> + </label>
+                        % elif napacenPrimer.operacija[0] == "odstevanje)":
+                            <label> - </label>
+
+                        % elif napacenPrimer.operacija[0] == "mnozenje":
+                            <label> * </label>
+
+                        % else:
+                            <label> / </label>
+                        %end
+                        <label>{{napacenPrimer.stevilka2[0]}}</label>
+                        <label> = </label>
+                        <label>{{napacenPrimer.resitev[0]}}</label>
+                        {{'(Vaša napačna rešitev:'}}
+                        <label>{{napacenPrimer.vasVnos}}</label>
+                        {{')'}}
+                    </td>
+                </tr>
+                %end
+            </table>              
+        </nav>
+
+    </div>
+    <div class="column">
+        <h1>Naš mali matematik.</h1></br>
+            
+        <form action="/ustvari_igro" method="POST">
+            <div class="columns">
+
+                <div class="column">
+                    <label for="ime_igre">Ime igre: </label><input type="text" id="ime_igre" name="ime_igre"><br>                    
+                    <p>Izberi operacijo:</p>
+                    <input type="radio" id="st1" name="operacija" value="ses" checked="checked" >
+                    <label for="ses">Seštevanje (+)</label><br>
+        
+                    <input type="radio" id="st2" name="operacija" value="ods" >
+                    <label for="ods">Odštevanje (-)</label><br>
+        
+                    <input type="radio" id="st3" name="operacija" value="mnoz" >
+                    <label for="mnoz">Množenje (*)</label><br>
+
+                    <input type="radio" id="st4" name="operacija" value="del" >
+                    <label for="del">Deljenje (/)</label><br><br>
+                </div>
+            </div>
+            <input type="submit" value="Začni">
+
+        </form>
+    </div>
+</div>

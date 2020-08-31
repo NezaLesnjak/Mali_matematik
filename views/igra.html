@@ -1,0 +1,27 @@
+% rebase('base.html', izbrani_zavihek='igra' )
+
+<div class="columns">
+    <div class="column is-one-fifth">
+        <div>
+            <p>Primeri:</p>
+        </div>
+        <form action="/preveri" method="POST" >
+            <table>
+                % for primer in igra.primeri:
+                <tr>
+                    <td>
+                        <span>{{primer.stevilka1[0]}} </span>
+                        <span>{{primer.operacija}} </span>
+                        <span>{{primer.stevilka2[0]}} = </span>
+                        <input type="int" id="vasVnos" name="vasVnos">
+                        <input type="hidden" id="rezultat" name="rezultat" value = "{{primer.resitev}}" >
+
+                    </td>
+                </tr>
+                %end
+            </table>
+            <input type="submit" value="Oddaj rezultate">
+        </form>
+        
+    </div>
+</div>
