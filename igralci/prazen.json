@@ -36,6 +36,22 @@
                     "operacija": "odštevanje"
                 }]
             }
+        ],
+        "napacniPrimeri": [
+            {
+                "stevilo1":1,
+                "stevilo2":1,
+                "operacija": "seštevanje",
+                "resitev":2,
+                "vasVnos":3
+            },
+            {
+                "stevilo1":1,
+                "stevilo2":1,
+                "operacija": "seštevanje",
+                "resitev":2,
+                "vasVnos":3
+            }
         ]
     }
 }

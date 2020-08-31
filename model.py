@@ -30,7 +30,6 @@ class Igralec:
         podatki = Podatki.nalozi_iz_slovarja(slovar_stanja['podatki'])
         return cls(uporabnisko_ime,geslo, podatki)
         
-
 class Podatki:
     def __init__(self):
         self.igre = []
@@ -48,7 +47,16 @@ class Podatki:
         self.stopnja = stopnja,
         self.operacija = operacija,
         self.primeri = primeri
-  
+
+    def nov_napacenPrimer_nalozi(self, stevilka1, stevilka2, operacija, resitev, vasVnos):
+        self.napacniPrimeri.append(napacniPrimer(stevilka1, stevilka2, operacija, resitev, vasVnos))
+
+    def nov_napacenPrimer(self, stevilka1,stevilka2,operacija, resitev,vasVnos):
+        self.stevilka1 = stevilka1,
+        self.stevilka2 = stevilka2,
+        self.operacija = operacija,
+        self.resitev = resitev,
+        self.vasVnos = vasVnos 
 
     def slovar_s_stanjem(self):
         return {
@@ -61,7 +69,14 @@ class Podatki:
                     "resitev": primer.resitev,
                     "operacija": primer.operacija
                 }for primer in igra.primeri]
-            }]
+            }for igra in self.igre],
+            'napacniPrimeri': [{
+                "stevilo1": napacniPrimer.stevilka1,
+                "stevilo2": napacniPrimer.stevilka2,
+                "operacija": napacniPrimer.operacija,
+                "resitev:": napacniPrimer.resitev,
+                "vasVnos": napacniPrimer.vasVnos
+            } for napacniPrimer in self.napacniPrimeri],            
         }
 
     @classmethod
@@ -70,12 +85,26 @@ class Podatki:
         for igra in slovar_s_stanjem['igre']:
             primeri = []
             for primer in igra['primeri']:
-                nov_primer = Primer(primer['stevilo1'], primer['stevilo2'], primer['operacija'], primer['resitev'])
+                nov_primer = Primer(primer['stevilo1'], 
+                primer['stevilo2'], 
+                primer['operacija'], 
+                primer['resitev'])
                 primeri.append(nov_primer)
-            nova_igra = podatki.nova_igra_nalozi(
+            podatki.nova_igra_nalozi(
             igra['operacija'],
             igra['ime_igre'],
             primeri)
+        for napacniPrimer in slovar_s_stanjem['napacniPrimeri']:
+            podatki.nov_napacenPrimer(napacniPrimer['stevilo1'], 
+            napacniPrimer['stevilo2'], 
+            napacniPrimer['operacija'], 
+            napacniPrimer['resitev'], 
+            napacniPrimer['vasVnos'])
+            podatki.nov_napacenPrimer_nalozi(napacniPrimer['stevilo1'],
+            napacniPrimer['stevilo2'],
+            napacniPrimer['operacija'],
+            napacniPrimer['resitev'],
+            napacniPrimer['vasVnos'])
         return podatki
 
     def _ustvari_primere(self, operacija):
@@ -136,4 +165,10 @@ class Primer:
         self.operacija = operacija,
         self.resitev = resitev
 
-
+class napacniPrimer:
+    def __init__(self, stevilka1,stevilka2,operacija, resitev,vasVnos):
+        self.stevilka1 = stevilka1,
+        self.stevilka2 = stevilka2,
+        self.operacija = operacija,
+        self.resitev = resitev,
+        self.vasVnos = vasVnos  
