@@ -10,10 +10,23 @@
                 % for primer in igra.primeri:
                 <tr>
                     <td>
-                        <span>{{primer.stevilka1[0]}} </span>
-                        <span>{{primer.operacija}} </span>
-                        <span>{{primer.stevilka2[0]}} = </span>
+                        <span>{{primer.stevilka1}} </span>
+
+                        % if primer.operacija == "ses":
+                            <span> + </span>
+                        % elif primer.operacija == "ods":
+                            <span> - </span>
+                        % elif primer.operacija == "mnoz":
+                            <span> * </span>
+                        % else:
+                            <span> / </span>
+                        %end
+
+                        <span>{{primer.stevilka2}} = </span>
                         <input type="int" id="vasVnos" name="vasVnos">
+                        <input type="hidden" id="st1" name="st1" value = "{{primer.stevilka1}}" >
+                        <input type="hidden" id="st2" name="st2" value = "{{primer.stevilka2}}" >
+                        <input type="hidden" id="op" name="op" value = "{{primer.operacija}}" >
                         <input type="hidden" id="rezultat" name="rezultat" value = "{{primer.resitev}}" >
 
                     </td>

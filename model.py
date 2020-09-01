@@ -38,9 +38,12 @@ class Podatki:
     def nova_igra_nalozi(self, operacija, ime_igre, primeri):
         self.igre.append(Igra(ime_igre, operacija, primeri))
 
-    @classmethod
+    def append_igra(self, igra):
+        self.igre.append(igra)
+    
     def nova_igra(self, operacija, ime_igre):
         nigra = Igra(ime_igre, operacija,Podatki._ustvari_primere(self,operacija))
+        self.igre.append(nigra)
         return nigra  
 
     def nova_igra_rez(self, stopnja, operacija, primeri):
@@ -53,7 +56,6 @@ class Podatki:
 
     def nov_napacenPrimer(self, stevilka1,stevilka2,operacija, resitev,vasVnos):
         self.napacniPrimeri.append(NapacniPrimer(stevilka1,stevilka2, operacija, resitev, vasVnos))
-
 
     def slovar_s_stanjem(self):
         return {
@@ -71,9 +73,9 @@ class Podatki:
                 "stevilka1": napacniPrimer.stevilka1,
                 "stevilka2": napacniPrimer.stevilka2,
                 "operacija": napacniPrimer.operacija,
-                "resitev:": napacniPrimer.resitev,
+                "resitev": napacniPrimer.resitev,
                 "vasVnos": napacniPrimer.vasVnos
-            } for napacniPrimer in self.napacniPrimeri],            
+            } for napacniPrimer in self.napacniPrimeri]            
         }
 
     @classmethod
@@ -143,7 +145,6 @@ class Podatki:
             slovar_s_stanjem = json.load(datoteka)
         return cls.nalozi_iz_slovarja(slovar_s_stanjem)
 
-
 class Igra:
     def __init__(self, ime_igre, operacija, primeri):
             self.ime_igre = ime_igre
@@ -152,15 +153,15 @@ class Igra:
    
 class Primer:
     def __init__(self, stevilka1,stevilka2,operacija, resitev):
-        self.stevilka1 = stevilka1,
-        self.stevilka2 = stevilka2,
-        self.operacija = operacija,
+        self.stevilka1 = stevilka1
+        self.stevilka2 = stevilka2
+        self.operacija = operacija
         self.resitev = resitev
 
 class NapacniPrimer:
     def __init__(self, stevilka1,stevilka2,operacija, resitev,vasVnos):
-        self.stevilka1 = stevilka1,
-        self.stevilka2 = stevilka2,
-        self.operacija = operacija,
-        self.resitev = resitev,
+        self.stevilka1 = stevilka1
+        self.stevilka2 = stevilka2
+        self.operacija = operacija
+        self.resitev = resitev
         self.vasVnos = vasVnos  

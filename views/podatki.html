@@ -8,9 +8,21 @@
                 Statistični podatki:
             </p>
             <table>
+                <th>Ime igre</th>
+                <th>Operacija</th>
                 %for igra in podatki.igre:
                 <tr>
                     <td>{{igra.ime_igre}}</td>
+                    
+                    % if igra.operacija == "ses":
+                    <td>Seštevanje</td>
+                    % elif igra.operacija == "ods":
+                    <td>Odštevanje</td>
+                    % elif igra.operacija == "mnoz":
+                    <td>Množenje</td>
+                    % else:
+                    <td>Deljenje</td>
+                    %end
                 </tr>
                 %end
             </table>
@@ -25,21 +37,19 @@
                 %for napacenPrimer in podatki.napacniPrimeri:
                 <tr>
                     <td>
-                        <label>{{napacenPrimer.stevilka1[0]}}</label>
-                        % if napacenPrimer.operacija[0] == "sestevanje":
+                        <label>{{napacenPrimer.stevilka1}}</label>
+                        % if napacenPrimer.operacija == "ses":
                             <label> + </label>
-                        % elif napacenPrimer.operacija[0] == "odstevanje)":
+                        % elif napacenPrimer.operacija == "ods":
                             <label> - </label>
-
-                        % elif napacenPrimer.operacija[0] == "mnozenje":
+                        % elif napacenPrimer.operacija == "mnoz":
                             <label> * </label>
-
                         % else:
                             <label> / </label>
                         %end
-                        <label>{{napacenPrimer.stevilka2[0]}}</label>
+                        <label>{{napacenPrimer.stevilka2}}</label>
                         <label> = </label>
-                        <label>{{napacenPrimer.resitev[0]}}</label>
+                        <label>{{napacenPrimer.resitev}}</label>
                         {{'(Vaša napačna rešitev:'}}
                         <label>{{napacenPrimer.vasVnos}}</label>
                         {{')'}}
@@ -59,6 +69,7 @@
                 <div class="column">
                     <label for="ime_igre">Ime igre: </label><input type="text" id="ime_igre" name="ime_igre"><br>                    
                     <p>Izberi operacijo:</p>
+
                     <input type="radio" id="st1" name="operacija" value="ses" checked="checked" >
                     <label for="ses">Seštevanje (+)</label><br>
         

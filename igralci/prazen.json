@@ -2,55 +2,128 @@
     "uporabnisko_ime": "prazen",
     "geslo": "prazen",
     "podatki": {
-        "st_iger": 2,
         "igre": [
             {
-                "ime_igre" : "prva igra",
-                "operacija": "seštevanje",
-                "primeri": [{
-                    "stevilka1":1,
-                    "stevilka2":1,
-                    "resitev":2,
-                    "operacija": "seštevanje"
-                },
-                {
-                    "stevilka1":1,
-                    "stevilka2":1,
-                    "resitev":2,
-                    "operacija": "seštevanje"
-                }]
+                "ime_igre": "prva igra",
+                "operacija": "ses",
+                "primeri": [
+                    {
+                        "stevilka1": 1,
+                        "stevilka2": 1,
+                        "resitev": 2,
+                        "operacija": "ses"
+                    },
+                    {
+                        "stevilka1": 1,
+                        "stevilka2": 1,
+                        "resitev": 2,
+                        "operacija": "ses"
+                    }
+                ]
             },
             {
-                "ime_igre" : "druga igra",
-                "operacija": "odštevanje",
-                "primeri": [{
-                    "stevilka1":3,
-                    "stevilka2":1,
-                    "resitev":2,
-                    "operacija": "odštevanje"
-                },
-                {
-                    "stevilka1":3,
-                    "stevilka2":1,
-                    "resitev":2,
-                    "operacija": "odštevanje"
-                }]
+                "ime_igre": "2",
+                "operacija": "ses",
+                "primeri": [
+                    {
+                        "stevilka1": 8,
+                        "stevilka2": 1,
+                        "resitev": 9,
+                        "operacija": "ses"
+                    }
+                ]
+            },
+            {
+                "ime_igre": "3",
+                "operacija": "ods",
+                "primeri": [
+                    {
+                        "stevilka1": 75,
+                        "stevilka2": 13,
+                        "resitev": 62,
+                        "operacija": "ods"
+                    }
+                ]
+            },
+            {
+                "ime_igre": "4",
+                "operacija": "ses",
+                "primeri": [
+                    {
+                        "stevilka1": 10,
+                        "stevilka2": 47,
+                        "resitev": 57,
+                        "operacija": "ses"
+                    },
+                    {
+                        "stevilka1": 9,
+                        "stevilka2": 28,
+                        "resitev": 37,
+                        "operacija": "ses"
+                    },
+                    {
+                        "stevilka1": 40,
+                        "stevilka2": 39,
+                        "resitev": 79,
+                        "operacija": "ses"
+                    },
+                    {
+                        "stevilka1": 44,
+                        "stevilka2": 30,
+                        "resitev": 74,
+                        "operacija": "ses"
+                    },
+                    {
+                        "stevilka1": 38,
+                        "stevilka2": 11,
+                        "resitev": 49,
+                        "operacija": "ses"
+                    }
+                ]
             }
         ],
         "napacniPrimeri": [
             {
-                "stevilka1":1,
-                "stevilka2":1,
-                "operacija": "seštevanje",
-                "resitev":2,
-                "vasVnos":3
+                "stevilka1": 1,
+                "stevilka2": 1,
+                "operacija": "ses",
+                "resitev": 2,
+                "vasVnos": 3
             },
             {
-                "stevilka1":1,
-                "stevilka2":1,
-                "operacija": "seštevanje",
-                "resitev":2,
-                "vasVnos":3
+                "stevilka1": 1,
+                "stevilka2": 1,
+                "operacija": "ses",
+                "resitev": 59,
+                "vasVnos": 8
+            },
+            {
+                "stevilka1": 1,
+                "stevilka2": 1,
+                "operacija": "ses",
+                "resitev": 46,
+                "vasVnos": 38
+            },
+            {
+                "stevilka1": 8,
+                "stevilka2": 1,
+                "operacija": "ses",
+                "resitev": 9,
+                "vasVnos": 10
+            },
+            {
+                "stevilka1": 75,
+                "stevilka2": 13,
+                "operacija": "ods",
+                "resitev": 62,
+                "vasVnos": 8
+            },
+            {
+                "stevilka1": 38,
+                "stevilka2": 11,
+                "operacija": "ses",
+                "resitev": 49,
+                "vasVnos": 9
             }
         ]
     }

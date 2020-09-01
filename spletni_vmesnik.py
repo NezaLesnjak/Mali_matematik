@@ -24,7 +24,6 @@ def trenutni_igralec():
         bottle.redirect('/prijava/')
     return igralci[uporabnisko_ime]
 
-
 def shrani_trenutnega_igralca():
     igralec = trenutni_igralec()
     igralec.shrani_stanje(os.path.join('igralci', f'{igralec.uporabnisko_ime}.json'))
@@ -40,7 +39,6 @@ def nacrtovanje_podatkov():
 
 def podatki_igralca():
     return trenutni_igralec().podatki
-
 
 @bottle.get('/prijava/')
 def prijava_get():
@@ -58,11 +56,10 @@ def prijava_post():
             Podatki()
         )
         igralci[uporabnisko_ime] = igralec
-        shrani_trenutnega_igralca()
-
     else:
         igralec = igralci[uporabnisko_ime]
         igralec.preveri_geslo(geslo)
+    
     bottle.response.set_cookie('uporabnisko_ime', igralec.uporabnisko_ime, path='/', secret=skrivnost)
     bottle.redirect('/')
 
@@ -82,18 +79,20 @@ def ustvari_igro():
 
 @bottle.post('/preveri')
 def preveri_igro():
-    vasVnos = bottle.request.forms.getunicode('vasVnos')
-    resitev = bottle.request.forms.getunicode('rezultat')
+    st1 = (int(bottle.request.forms.getunicode('st1')))
+    st2 =(int(bottle.request.forms.getunicode('st2')))
+    op = bottle.request.forms.getunicode('op')
+    vasVnos = (int(bottle.request.forms.getunicode('vasVnos')))
+    resitev =(int(bottle.request.forms.getunicode('rezultat')))
     if vasVnos == resitev:
-
+        
         bottle.redirect('/')
     else:
         podatki = podatki_igralca()
-        podatki.nov_napacenPrimer(1,1,"ses",resitev,vasVnos)
+        podatki.nov_napacenPrimer(st1,st2,op,resitev,vasVnos)
         shrani_trenutnega_igralca()
 
         bottle.redirect('/')
 
 
-    
 bottle.run(debug=True, reloader=True)
