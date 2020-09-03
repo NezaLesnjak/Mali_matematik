@@ -7,11 +7,11 @@
         </div>
         <form action="/preveri" method="POST" >
             <table>
+                %stev=1;
                 % for primer in igra.primeri:
                 <tr>
                     <td>
                         <span>{{primer.stevilka1}} </span>
-
                         % if primer.operacija == "ses":
                             <span> + </span>
                         % elif primer.operacija == "ods":
@@ -21,20 +21,18 @@
                         % else:
                             <span> / </span>
                         %end
-
                         <span>{{primer.stevilka2}} = </span>
-                        <input type="int" id="vasVnos" name="vasVnos">
-                        <input type="hidden" id="st1" name="st1" value = "{{primer.stevilka1}}" >
-                        <input type="hidden" id="st2" name="st2" value = "{{primer.stevilka2}}" >
-                        <input type="hidden" id="op" name="op" value = "{{primer.operacija}}" >
-                        <input type="hidden" id="rezultat" name="rezultat" value = "{{primer.resitev}}" >
-
+                        <input type="int" id="vasVnos-{{stev}}" name="vasVnos-{{stev}}">
+                        <input type="hidden" id="st1-{{stev}}" name="st1-{{stev}}" value = "{{primer.stevilka1}}" >
+                        <input type="hidden" id="st2-{{stev}}" name="st2-{{stev}}" value = "{{primer.stevilka2}}" >
+                        <input type="hidden" id="op-{{stev}}" name="op-{{stev}}" value = "{{primer.operacija}}" >
+                        <input type="hidden" id="rezultat-{{stev}}" name="rezultat-{{stev}}" value = "{{primer.resitev}}" >
                     </td>
                 </tr>
+                %stev += 1
                 %end
             </table>
             <input type="submit" value="Oddaj rezultate">
         </form>
-        
     </div>
 </div>

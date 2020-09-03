@@ -10,10 +10,10 @@
             <table>
                 <th>Ime igre</th>
                 <th>Operacija</th>
+
                 %for igra in podatki.igre:
                 <tr>
                     <td>{{igra.ime_igre}}</td>
-                    
                     % if igra.operacija == "ses":
                     <td>Seštevanje</td>
                     % elif igra.operacija == "ods":
@@ -25,6 +25,7 @@
                     %end
                 </tr>
                 %end
+
             </table>
         </nav>
 
@@ -34,6 +35,7 @@
                 Napačni primeri:
             </p>
             <table>
+
                 %for napacenPrimer in podatki.napacniPrimeri:
                 <tr>
                     <td>
@@ -56,6 +58,7 @@
                     </td>
                 </tr>
                 %end
+
             </table>              
         </nav>
 
@@ -84,7 +87,7 @@
                 </div>
             </div>
             <input type="submit" value="Začni">
-
         </form>
+        
     </div>
 </div>

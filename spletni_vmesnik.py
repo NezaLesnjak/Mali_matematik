@@ -79,20 +79,21 @@ def ustvari_igro():
 
 @bottle.post('/preveri')
 def preveri_igro():
-    st1 = (int(bottle.request.forms.getunicode('st1')))
-    st2 =(int(bottle.request.forms.getunicode('st2')))
-    op = bottle.request.forms.getunicode('op')
-    vasVnos = (int(bottle.request.forms.getunicode('vasVnos')))
-    resitev =(int(bottle.request.forms.getunicode('rezultat')))
-    if vasVnos == resitev:
-        
-        bottle.redirect('/')
-    else:
-        podatki = podatki_igralca()
-        podatki.nov_napacenPrimer(st1,st2,op,resitev,vasVnos)
-        shrani_trenutnega_igralca()
+    i = 1
+    while i <= 5:
 
-        bottle.redirect('/')
+        s1 = bottle.request.forms.getunicode('st1-' + str(i))
+        s2 = bottle.request.forms.getunicode('st2-' + str(i))
+        op = bottle.request.forms.getunicode('op-' + str(i))
+        vasVnos = bottle.request.forms.getunicode('vasVnos-' + str(i))
+        resitev = bottle.request.forms.getunicode('rezultat-' + str(i))
+        if vasVnos != resitev:
+            podatki = podatki_igralca()
+            podatki.nov_napacenPrimer(s1,s2,op,resitev,vasVnos)
+            shrani_trenutnega_igralca()
+        i += 1
+
+    bottle.redirect('/')
 
 
 bottle.run(debug=True, reloader=True)

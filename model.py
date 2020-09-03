@@ -20,7 +20,6 @@ class Igralec:
         with open(ime_datoteke, 'w') as datoteka:
             json.dump(slovar_stanja, datoteka, ensure_ascii=False, indent=4)
 
-
     @classmethod
     def nalozi_stanje(cls, ime_datoteke):
         with open(ime_datoteke) as datoteka:
@@ -40,7 +39,7 @@ class Podatki:
 
     def append_igra(self, igra):
         self.igre.append(igra)
-    
+
     def nova_igra(self, operacija, ime_igre):
         nigra = Igra(ime_igre, operacija,Podatki._ustvari_primere(self,operacija))
         self.igre.append(nigra)
@@ -104,12 +103,11 @@ class Podatki:
     def _ustvari_primere(self, operacija):
         primeri = []
         i = 1
-        while i <= 1:
+        while i <= 5:
             primer = Podatki._nov_primer(self,operacija)                        
             primeri.append(primer)
             i += 1
         return primeri
-
 
     def _nov_primer(self, operacija):
         if operacija == 'ses':
