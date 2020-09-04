@@ -33,6 +33,7 @@ class Podatki:
     def __init__(self):
         self.igre = []
         self.napacniPrimeri = []
+        self.pravilniPrimeri = []
 
     def nova_igra_nalozi(self, operacija, ime_igre, primeri):
         self.igre.append(Igra(ime_igre, operacija, primeri))
@@ -54,7 +55,12 @@ class Podatki:
         self.napacniPrimeri.append(NapacniPrimer(stevilka1, stevilka2, operacija, resitev, vasVnos))
 
     def nov_napacenPrimer(self, stevilka1,stevilka2,operacija, resitev,vasVnos):
-        self.napacniPrimeri.append(NapacniPrimer(stevilka1,stevilka2, operacija, resitev, vasVnos))
+        self.napacniPrimeri.append(NapacniPrimer(stevilka1, stevilka2, operacija, resitev, vasVnos))
+        return NapacniPrimer(stevilka1, stevilka2, operacija, resitev, vasVnos)
+
+    def nov_pravilenPrimer(self, stevilka1, stevilka2, operacija, resitev):
+        self.pravilniPrimeri.append(Primer(stevilka1, stevilka2, operacija, resitev))
+        return Primer(stevilka1, stevilka2, operacija, resitev)
 
     def slovar_s_stanjem(self):
         return {

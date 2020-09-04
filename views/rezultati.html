@@ -1,0 +1,37 @@
+% rebase('base.html', izbrani_zavihek='rezultati' )
+
+<p style="font-size:20px"><b>Napačno izračunani primeri:</b></p></br>
+
+<form action="/", method=GET>
+
+    <table>
+        <tr>
+            <td>
+                % for primer in rezultati:
+                <tr>
+                    <td>
+                        <span>{{primer.stevilka1}} </span>
+                        % if primer.operacija == "ses":
+                            <span> + </span>
+                        % elif primer.operacija == "ods":
+                            <span> - </span>
+                        % elif primer.operacija == "mnoz":
+                            <span> * </span>
+                        % else:
+                            <span> / </span>
+                        %end
+                        <span>{{primer.stevilka2}}</span>
+                        <label> = </label>
+                        <label>{{primer.resitev}}</label>
+                        {{'(Vaša napačna rešitev:'}}
+                        <label>{{primer.vasVnos}}</label>
+                        {{')'}}
+                    </td>
+                </tr>
+                %end
+            </td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Začetna stran">
+</form>
