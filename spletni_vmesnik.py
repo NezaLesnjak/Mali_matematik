@@ -82,19 +82,22 @@ def preveri_igro():
     napacniPrimeri = []
 
     while i <= 5:
-        s1 = bottle.request.forms.getunicode('st1-' + str(i))
-        s2 = bottle.request.forms.getunicode('st2-' + str(i))
+        s1_s = bottle.request.forms.getunicode('st1-' + str(i))
+        s2_s = bottle.request.forms.getunicode('st2-' + str(i))
         op = bottle.request.forms.getunicode('op-' + str(i))
         vasVnos = bottle.request.forms.getunicode('vasVnos-' + str(i))
         resitev = bottle.request.forms.getunicode('rezultat-' + str(i))
         
+        s1 = int(s1_s)
+        s2 = int(s2_s)
+
         if vasVnos != resitev:
             podatki = podatki_igralca()
-            podatki.nov_napacenPrimer(s1,s2,op,resitev,vasVnos)
-            shrani_trenutnega_igralca()
-            napacniPrimeri.append(podatki.nov_napacenPrimer(s1,s2,op,resitev,vasVnos))
+            np = podatki.nov_napacenPrimer(s1,s2,op,resitev,vasVnos)
+            napacniPrimeri.append(np)
         i += 1
-    
+        
+    shrani_trenutnega_igralca()
     return bottle.template('rezultati.html', rezultati=napacniPrimeri)
 
 bottle.run(debug=True, reloader=True)
