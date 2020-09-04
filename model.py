@@ -54,7 +54,7 @@ class Podatki:
     def nov_napacenPrimer_nalozi(self, stevilka1, stevilka2, operacija, resitev, vasVnos):
         self.napacniPrimeri.append(NapacniPrimer(stevilka1, stevilka2, operacija, resitev, vasVnos))
 
-    def nov_napacenPrimer(self, stevilka1,stevilka2,operacija, resitev,vasVnos):
+    def nov_napacenPrimer(self, stevilka1, stevilka2, operacija, resitev, vasVnos):
         self.napacniPrimeri.append(NapacniPrimer(stevilka1, stevilka2, operacija, resitev, vasVnos))
         return NapacniPrimer(stevilka1, stevilka2, operacija, resitev, vasVnos)
 
@@ -156,14 +156,14 @@ class Igra:
             self.primeri = primeri
    
 class Primer:
-    def __init__(self, stevilka1,stevilka2,operacija, resitev):
+    def __init__(self, stevilka1, stevilka2, operacija, resitev):
         self.stevilka1 = stevilka1
         self.stevilka2 = stevilka2
         self.operacija = operacija
         self.resitev = resitev
 
 class NapacniPrimer:
-    def __init__(self, stevilka1,stevilka2,operacija, resitev,vasVnos):
+    def __init__(self, stevilka1, stevilka2, operacija, resitev, vasVnos):
         self.stevilka1 = stevilka1
         self.stevilka2 = stevilka2
         self.operacija = operacija

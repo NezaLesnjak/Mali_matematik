@@ -63,14 +63,24 @@
         </nav>
 
     </div>
+
     <div class="column">
-        <h1>Naš mali matematik.</h1></br>
-            
+        <p style="font-size:30px"><b>Pozdravljen naš mali matematik!</b></p></br>
+
+        <p>
+            Spodaj si izberi ime igre in operacijo, s katero računanje bi rad vadil, nato pa pritisni gumb Začni.<br>
+            V vsaki igri je pet računov.<br>
+            <i>Pazi!</i> Če izbereš deljenje, rezultat zapiši le s celim delom ulomka. (Primer: 9 / 4 = 2)<br>
+            Vso srečo!</br>
+        </br>
+        </br>
+        </p>
+        
         <form action="/ustvari_igro" method="POST">
             <div class="columns">
 
                 <div class="column">
-                    <label for="ime_igre">Ime igre: </label><input type="text" id="ime_igre" name="ime_igre"><br>                    
+                    <label for="ime_igre">Ime igre: </label><input type="text" id="ime_igre" name="ime_igre"></br></br>                    
                     <p>Izberi operacijo:</p>
 
                     <input type="radio" id="st1" name="operacija" value="ses" checked="checked" >
